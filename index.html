@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+		<style>
+			*{margin:0;padding:0;}
+			ul{list-style: none;}
+			html,body{width:100%;height: 100%;font-family: "黑体";}
+			a:hover,a:link,a:visited{color: #fff;text-decoration: none;}
+			.container,.container_h5{width:100%;}
+			.container_h5{display: none;}
+			.con_head{margin:20px 0px;padding:0px 100px;overflow-x: hidden;}
+			.container_h5 .con_head{margin:10px 0px;padding:0px 12px;}
+			.con_head .head_left,.con_head .head_right{display:inline-block;}
+			.container_h5 .con_head{width:100%;margin:0px;padding:10px;position: fixed;z-index: 1000;background: #fff;}
+			.con_head .head_right{margin-top:14px;float: right;}
+			.container_h5 .con_head .head_right{margin-top:0px;}
+			.left_logo{display:inline-block;width:130px;height:82px;background: url(img/logo.png) left center no-repeat;background-size: cover;}
+			.container_h5 .left_logo{width:50px; height:32px;}
+			.left_exp{margin-left:20px;border-left:2px solid #a8a8a8;display:inline-block;padding:10px 18px;position: relative;top:-10px;}
+			.container_h5 .left_exp{margin-left:5px;padding:4px 6px;position: relative;top:0px;}
+			.left_exp .exp_tit1{margin-bottom:8px;font-size: 24px;font-weight: bold;letter-spacing: 4px;}
+			.container_h5 .left_exp .exp_tit1{margin-bottom:5px;font-size: 16px;font-weight: bold;letter-spacing: 2px;}
+			.left_exp .exp_tit2{font-size: 18px;}
+			.container_h5 .left_exp .exp_tit2{font-size: 12px;}
+			.right_logo{display: inline-block;width:50px;height: 51px;background: url(img/phone.png) center center no-repeat;background-size: cover;}
+			.container_h5 .right_logo{width:20px;height: 21px;}
+			.right_exp,.right_call{display: inline-block;margin-top:10px;}
+			.right_exp .exp_tit1{margin-bottom: 8px;font-size: 34px;color: #e3802d;}
+			.container_h5 .right_exp .exp_tit1{margin-bottom: 4px;font-size: 15px;}
+			.right_exp .exp_tit2{font-size: 15px;color: #808080;}
+			.container_h5 .right_exp .exp_tit2{font-size: 12px;}
+			.right_call .call_btn{position:relative;top:-20px;left:10px;background: #eeae1a;color: #fff;padding:10px 28px;border-radius: 5px;font-size: 24px;}
+			.container_h5 .right_call .call_btn{position:relative;top:-10px;padding:5px 8px;border-radius: 4px;font-size: 14px;}
+			.nav{z-index:1200;padding:20px 14%;box-sizing:border-box;width:100%;background: #4f94e7;color: #fff;}
+			.nav_con{overflow-x: hidden;}
+			.nav_con li{float: left;width:16.6%;text-align: center;font-size: 20px;}
+			.pay_img{padding:36px 0px;width:100%;margin:0 auto;text-align: center;}
+			.container_h5 .pay_img{position:relative;top:60px;padding:20px 0px;}
+			.pay_img .tit1{margin-bottom:10px;font-size: 34px;font-weight: bold;}
+			.container_h5 .pay_img .tit1{font-size: 20px;}
+			.pay_img .tit2{font-size: 22px;color: #999;font-weight: bold;}
+			.container_h5 .pay_img .tit2{font-size: 16px;}
+			.pay_img .img_bg{position:relative;top:30px;width:824px;height:430px;margin:0 auto;background: url(img/tradstructure.png) center center no-repeat;background-size: cover;}
+			.container_h5 .pay_img .img_bg{width:300px;height:156px;}
+			.heart{width:100%;}
+			.heart #core{margin:0 auto;background: #f4f9ff;padding:50px 0;box-sizing: border-box;}
+			.stielss_btb{color: #2b92fd;}
+			.stielssBot_btb2 {margin:0 auto;display: block; width: 90px;height: 7px;background: #fff;border-radius: 10px;}
+			.stielss{font-size: 30px;text-align: center;margin-bottom: 20px;}
+			.stielssBot_btb {margin:0 auto;display: block;width: 90px;height: 7px;background: #2B92FD;border-radius: 10px;}
+			.hx {
+				width:100%;
+			    position: relative;
+			}
+			.hx_left ul li .left_xx,.hx_right ul li .left_xx {
+			    background: #429aff;
+			    padding:8px 12px;
+			    font-size: 19px;
+			    height: 40px;
+			    line-height: 40px;
+			    border-radius: 30px;
+			    color: #fff;
+			    width: 120px;
+			    text-align: center;
+			}
+			.quan {
+			    margin-right: 6px;
+			    font-size: 12px;
+			}
+			.hx_tit {
+			    position: absolute;
+			    text-align: center;
+			    left: 50%;
+			    margin-left: -90px;
+			    top: 46%;
+			    color: #f4f8ff;
+			    font-size: 30px;
+			    line-height: 29px;
+			}
+			.hx_tit p {
+			    font-size: 15px;
+			    color: #cac8c8;
+			}
+			.hx_left {
+			    position: absolute;
+			    top: 2%;
+			    left: 16%;
+			}
+			.hx_right{
+				position: absolute;
+			    top: 2%;
+			    right: 16%;
+			}
+			.hx_left ul li,.hx_right ul li {
+			    height: 120px;
+			    color: #77c6ff;
+			}
+			 #core img {
+			    padding-top: 17px;
+			}
+			.hx img{display:block;margin:0 auto;max-width: 100%;}
+			.pay_prob{margin-top:30px;width:100%;text-align: center;}
+			.pay_prob ul{position:relative;top:30px;width:1130px;margin:0 auto;overflow-x: hidden;}
+			.container_h5 .pay_prob ul{width:100%;}
+			.pay_prob li{width:250px;height: 250px;box-shadow: 1px 1px 10px 3px #CCC;float: left;margin:8px 15px;}
+			.container_h5 .pay_prob li{clear: left;position: relative;left:50%;margin-left:-125px;}
+			.pay_prob .prob_logo{margin-top:60px;margin-bottom: 20px;}
+			.pay_prob .prob_tit{font-size: 22px;color: #2B92FD;}
+			.pay_prob .back{display: none;padding:86px 20px 0px 20px;font-size:18px;box-sizing: border-box;color: #2B92FD;}
+			.cpinfonav3.btb {
+				box-sizing: border-box;
+				margin-top:80px;
+				padding-top:40px;
+			    background: url(img/btb_sec3bg.jpg) center center;
+			    height: 550px;
+			}
+			  .pro_list{width:88%;margin:50px auto 10px auto;display:flex;box-sizing:border-box;padding:0 0 40px 0;}
+			  .pro_list li{flex:1;text-align:center;border-right:1px solid #6c6b6b;box-sizing:border-box;padding:0 0 20px 0;}
+			  .pro_list li:last-child{border-right:none;}
+			  .pro_list li .li_box{width:94%;margin:0 auto;}
+			  .container_h5 .pro_list .li_box img{width:50px;}
+			  .container_h5 .pro_list li:first-child img{width:38px;}
+			  .li_box h5{font-size:15px;color:#fff;font-weight:normal;margin:8px 0 0 0;}
+			  .li_box p{font-size:14px;color:#fff;margin:14px 0 0 0;}
+			  .pro_ours{width:90%;margin:30px auto 0 auto;box-sizing:border-box;text-align:center;}
+			  .pro_ours_title{width:100%;}
+			  .pro_ours_title span{display:block;text-align:center;}
+			  .pro_ours_title span:first-child{color:#000;font-family:"黑体";font-size:34px;font-weight:bold;}
+			  .pro_ours_title span:nth-child(2){color:#999;font-size:22px;font-weight:bold;margin:8px 0;}
+			  .pro_ours_imgs{width:100%;overflow:hidden;margin:0 auto;text-align:center;}
+			  .pro_ours_imgs_lists{width:1142px;overflow:hidden;position:relative;left:50%;margin:30px 0 0 -571px;}
+			  .container_h5 .pro_ours_imgs_lists{width:90%;margin-left:-45%;}
+			  .pro_ours_imgs li{text-align:center;width:260px;height:300px;float:left;margin:0 34px 0 0;position:relative;}
+			  .container_h5 .pro_ours_imgs li{position: relative;left:50%;margin-left:-130px;clear: left;margin-right:0px;margin-bottom: 20px;}
+			  .container .pro_ours_imgs li:last-child{margin:0;}
+			  li.li_bgm01{background:url("img/tradnum_01.jpg") no-repeat center center;background-size:cover;}
+			  li.li_bgm02{background:url("img/tradnum_02.jpg") no-repeat center center;background-size:cover;}
+			  li.li_bgm03{background:url("img/tradnum_03.jpg") no-repeat center center;background-size:cover;}
+			  li.li_bgm04{background:url("img/tradnum_04.jpg") no-repeat center center;background-size:cover;}
+			  li.li_bgm05{background:url("img/tradnum_05.jpg") no-repeat center center;background-size:cover;}
+			  li.li_bgm06{background:url("img/tradnum_06.jpg") no-repeat center center;background-size:cover;}
+			  li.li_bgm07{background:url("img/tradnum_07.jpg") no-repeat center center;background-size:cover;}
+			  li.li_bgm08{background:url("img/tradnum_08.jpg") no-repeat center center;background-size:cover;}
+			  .pro_ours_imgs li span{display:block;position:absolute;}
+			  .pro_ours_imgs li span:first-child{top:80px;left:102px;padding:0 0 10px 0;border-bottom:3px solid #fff;}
+			  .pro_ours_imgs li span:nth-child(2){top:178px;color:#fff;width:100%;margin:0 auto;font-size:20px;font-weight:bold;}
+			  .container .coup{width:1142px;position:relative;left:50%;margin:30px auto 20px -571px;}
+			  .coup_box{width:100%;height:500px;overflow:hidden;box-sizing:border-box;margin:30px 0 0 0;}
+			  .coup_all,.coup_center,.coup_public{float:left;}
+			  .coup_all,.coup_public{width:35px;height:100%;vertical-align:middle;font-size:20px;background:#53b8ff;color:#fff;text-align:center;}
+			  .coup_all span,.coup_public span{display:inline-block;width:100%;height:100%;position:relative;top:50%;margin:-50% 0 0 0;}
+			  .coup_center{width:1044px;box-sizing:border-box;}
+			  .coup_center_single{width:100%;background:#53b8ff;}
+			  .coup_center_single span{display:inline-block;width:100%;padding:15px 0;text-align:center;font-size:20px;color:#fff;}
+			  .coup_center_ul1{width:100%;}
+			  .coup_center_ul1 ul{width:100%;overflow:hidden;}
+			  .coup_center_ul1 ul li{float:left;box-sizing:border-box;width:22%;margin:0 3% 0 0;text-align:center;}
+			  .coup_center_ul1 ul li:last-child{margin:0;}
+			  .coup_center_ul1 ul li span{display:inline-block;width:80%;box-sizing:border-box;padding:8px 0;font-size:16px;color:#fff;}
+			  .coup_center_ul2{width:100%;overflow:hidden;}
+			  .coup_center_ul2 ul{width:100%;overflow:hidden;}
+			  .coup_center_ul2 ul li{float:left;width:30%;margin:0 3% 0 0;box-sizing:border-box;padding:0 0 8px 0;}
+			  .coup_center_ul2 ul li .coup_center_title{width:100%;box-sizing:border-box;}
+			  .coup_center_title span{display:block;box-sizing:border-box;color:#fff;font-size:15px;padding:8px 0;text-align:center;}
+			  .coup_center_ul2 ul li:last-child{margin:0;}
+			  .coup_center_midle{width:80%;margin:0 auto;overflow:hidden;}
+			  .coup_center_midle span{display:block;float:left;width:40%;text-align:center;margin:10px 0 0 0;color:#fff;font-size:15px;box-sizing:border-box;padding:6px 0;}
+			  .coup_center_btm{width:80%;margin:0 auto;}
+			  .coup_center_btm span{display:block;color:#fff;font-size:16px;text-align: center;padding:8px 0;}
+			  .bgc46adfc{background:#46adfc;}
+			  .bgc3bd3f8{background:#3bd3f8;}
+			  .bgc6995ff{background:#6995ff;}
+			  .bgc9991ff{background:#9991ff;}
+			  .bgcb6dfff{background:#b6dfff};
+			  .marR10{margin-right:10px !important;}
+			  .marL10{margin-left:10px !important;}
+			  .marT15{margin-top:15px !important;}
+			  .marB15{margin-bottom:15px !important;}
+			  .marR10x{margin-right:10% !important;}
+			  .marL10x{margin-left:10% !important;}
+			
+			.container_h5 .list{position:fixed;right:10px;top:10px;z-index: 1000;}
+			.container_h5 .nav1{position:fixed;right:0px;top:65px;display: none;z-index: 1000;}
+			.nav1 li{width:100px;padding:6px 10px;background: #2B92FD;color: #fff;border-bottom: 1px solid #f2f2f2;text-align: center;}
+			.container_h5 .heart{margin-top:70px;}
+			.container_h5 .coup{width:100%;text-align: center;color: #fff;}
+			.coup .cont{margin-top:30px;}
+			.coup .cont .head_tit1,.all_footer,.footers{box-sizing:border-box;padding:8px;width:100%;background: #53B8FF;}
+			.coup .main_tit1,.coup .main_tit2{box-sizing:border-box;margin-top:8px;padding:8px;width:90%;position: relative;left:50%;margin-left: -45%;background: #53B8FF;}
+			.coup .main_con1,.coup .main_con2{width:90%;margin:0 auto;display: flex;}
+			.coup .main_con1 article,.coup .main_con2 article{margin:8px;box-sizing:border-box;padding:8px;flex: 1;background: #46ADFC;}
+			.main_con1 article:last-child{background: #3BD3F8;}
+			.coup .main_con2 article{margin-top:0px;background: #6995FF;}
+			.main_con2 article:last-child{background: #9991FF;}
+			.coup .main_tit2,.main_footer{margin-bottom:8px;padding:6px;background: #B6DFFF;color: #628cf8;}
+			.main_con3{margin:0 auto;margin-bottom:8px;width:86%;background: #B6DFFF;}
+			.main_con3 header{box-sizing:border-box;padding:8px;background: #46ADFC;}
+			.main_con3 .con_child{box-sizing: border-box;padding:0px 15px;}
+			.main_con3 .con_child article{display: flex;}
+			.main_con3 .con_child div{background:#46ADFC;padding:8px 10px;box-sizing:border-box;flex: 1;margin:6px 15px;}
+			.main_footer,.all_footer{width:90%;box-sizing: border-box;margin:8px 16px;}
+			.footers{margin-top:8px;}
+			.ours{margin-top:30px;background: #2B2B2B;color: #F2F2F2;}
+			.ours .hrefs{padding:20px 0px;width:100%;text-align: center;}
+			.hrefs .hrefs_child{padding:10px 0px;display: flex;}
+			.hrefs_child div{flex: 1;}
+			.ours .ours_call{border-bottom:1px solid #666;padding:20px 0px;border-top:1px solid #666;background: #333;text-align: center;}
+			.ours_call div{margin-bottom: 10px;font-size: 15px;color: #ccc;}
+			.ours_call div:nth-child(2){font-size: 30px;font-weight: bold;color: #fff;}
+			.ours_logo{padding:0px 0px 0px 20px;position: relative;}
+			.ours_logo .logo_msg{position:absolute;left:50%;margin-left:-80px;width:160px;text-align:center;margin-bottom:20px;font-size: 20px;display: none;}
+			.ours_logo .logo_weixin{margin-top:-70px;}
+			.ours_logo .logo_call{padding:40px 20px 20px 20px;display: flex;}
+			.logo_call div{flex: 1;text-align: center;}
+			.ours_logo .logo_tit{font-size: 20px;text-align: center;color: #ccc;}
+			.ours .footer_bottom{padding-bottom:50px;text-align: center;font-family: "黑体";color: #999;}
+			
+			
+			.footer {
+				margin-top:40px;
+			    min-width: 1000px;
+			    padding-top: 15px;
+			    width: auto;
+			    background-color: #2b2b2b !important;
+			    color: #e6e6e6;
+			    position: relative;
+			}
+			.b_item { float: left;  }
+	        .b_item a, .b_item p { font-size: 16px; padding: 3px 25px; display: inline-block; }
+	        .p_img>img:first-child {  margin-left: 0; }
+	        .b_item p.p_dyh { color: #8b8989; padding-top: 2px; font-size: 15px;  }
+	        .v_line { height: 120px; background:#5a5a5a; width: 1px; float: left; margin: 0 20px; box-sizing: border-box; }
+	        .b_item .tel { font-size: 32px; font-weight: bold; padding-bottom: 0; }
+	        .b_item p.tips { font-size: 14px; padding-top: 0;  }
+	        .b_item p.p_img{padding: 3px 5px;}
+	        .pdleft0{padding-left: 0!important;}
+	        .b_item a.pd555{padding-left: 39px; padding-right: 39px;}
+	        .fbox_l{width: 50%;float: left;position: relative;}
+	        .fbox_l:after{content: '';height: 120px;width: 1px;position: absolute;top: 0;right: 1px;background: #5a5a5a;}
+	        .fbox_l .br_f a{float: left;width: 50%;padding: 8px 0;}
+	        .b_item.br_f{width: 255px;}
+	        .huyx {
+			    position: absolute;
+			    top: 0px;
+			    left: 50%;
+			    margin-left: 0px;
+			    font-family: "微软雅黑";
+			    font-size: 20px;
+			    display: none;
+			}
+			.hu {
+			    position: absolute;
+			    top: -66px;
+			    left: 50%;
+			    margin-left: 125px;
+			}
+			.hutel {
+			    position: absolute;
+			    top: 0px;
+			    left: 50%;
+			    margin-left: 220px;
+			    font-family: "微软雅黑";
+			    font-size: 20px;
+			    display: none;
+			}
+			.warpper {
+			    margin: 0 auto;
+			}
+			.warpper {
+			    width: 1200px;
+			}
+			.footer a, .footer a:hover, .footer a:active, .footer a:focus {
+			    color: #e6e6e6;
+			    text-decoration: none;
+			}
+			p {
+			    font-size: 14px;
+			    margin-top: 0;
+			    margin-bottom: 10px;
+			    color: #8f8f94;
+		    }
+		    @media screen  and (max-width: 768px){
+		    	.container{display: none;}
+		    	.container_h5{display: block;}
+		    }
+		    .spes{position: fixed;left:0;top:0;}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header class="con_head">
+				<section class="head_left">
+					<article class="left_logo"></article>
+					<article class="left_exp">
+						<article class="exp_tit1">云区块</article>
+						<article class="exp_tit2">区块链开发与应用一站式服务平台</article>
+					</article>
+				</section>
+				<section class="head_right">
+					<article class="right_logo"></article>
+					<article class="right_exp">
+						<article class="exp_tit1">11111111111</article>
+						<article class="exp_tit2">免费专业咨询顾问(9:00-19:00)</article>
+					</article>
+					<article class="right_call">
+						<article class="call_btn">免费咨询</article>
+					</article>
+				</section>
+			</header>
+			<nav class="nav">
+				<ul class="nav_con">
+					<li id="index">首页</li>
+					<li id="heart">核心技术</li>
+					<li id="pro_ext">产品优势</li>
+					<li id="my_pro">我的产品</li>
+					<li id="coup">平台架构</li>
+					<li id="ours">关于我们</li>
+				</ul>
+			</nav>
+			<section class="pay_img">
+				<header class="img_tit">
+					<div class="tit1">交易所交易结构图</div>
+					<div class="tit2">TRADE STRUCTURE CHART</div>
+				</header>
+				<section class="img_bg"></section>
+			</section>
+			<section class="heart">
+				<div id="core">
+						<div class="ui-layout">
+							<div class="stielss stielss_btb"><span></span>核心技术</div>
+								<div class="stielssBot_btb"></div>
+							<div></div>
+						</div>
+						<div class="hx">
+							<div class="hx_tit">系统核心技术
+								<p>SYSTEM CORE TECHNOLOGY</p>
+							</div>
+							<div class="hx_left">
+								<ul>
+									<li>
+										<span style="margin-left: 125px;" class="left_xx">专属网络</span><span class="quan">●</span>
+									</li>
+									<li>
+											<span class="left_xx">金属设施</span><span class="quan">●</span>
+									</li>
+									<li>
+											<span class="left_xx">安全机制</span><span class="quan">●</span>
+									</li>
+									<li>
+											<span style="margin-left: 125px;" class="left_xx">身份链</span><span class="quan">●</span>
+									</li>
+								</ul>
+							</div>
+							<div class="hx_right">
+									<ul>
+										<li>
+												<span class="quan" style="margin-left:-125px">●</span><span  class="left_xx">智能合约</span>
+										</li>
+										<li>
+												<span class="quan">●</span><span class="left_xx">共识机制</span>
+										</li>
+										<li>
+												<span class="quan">●</span><span class="left_xx">跨链交易</span>
+										</li>
+										<li>
+												<span class="quan" style="margin-left:-125px">●</span><span class="left_xx">多链交互</span>
+										</li>
+									</ul>
+								</div>
+							<img src="img/hxjs.png" style="height: 500px;" />
+						</div>
+					</div>
+			</section>
+			<section class="pay_prob">
+					<header class="ui-layout">
+						<div class="stielss stielss_btb"><span></span>交易形式</div>
+						<div class="stielssBot_btb"></div>
+					</header>
+					<ul>
+						<li class="zheng">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy1.png" /></div>
+								<div class="prob_tit">币币交易</div>
+							</div>
+							<div class="back">
+								针对虚拟货币和虚拟货币之间的交易，支持以其中一种币作为计价单位去购买其他币种。
+							</div>
+						</li>
+						<li class="zheng">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy2.png" /></div>
+								<div class="prob_tit">市场交易</div>
+							</div>
+							<div class="back">市价交易是指用户只设置买卖的总币数，生成委托单，从一开始撮合直到总币数交易完成。</div>
+						</li>
+						<li class="zheng">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy3.png" /></div>
+								<div class="prob_tit">限价交易</div>
+							</div>
+							<div class="back">支持用户设置买入/卖出币的价格和数量，自动撮合市场上的买单和卖单，达到用户设置的价格便按照价格优先时间优先顺序自动成交。</div>
+						</li>
+						<li class="zheng zheng_spe">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy4.png" /></div>
+								<div class="prob_tit">场外自由交易</div>
+							</div>
+							<div class="back">支持卖家在平台上发布出售比特币/以太币的项目，并说明付款方式和汇率。买家通过筛选符合自己的项目直接在线完成交易。</div>
+						</li>
+					</ul>
+			</section>
+			<section class="pro_ext">
+			    <div class="cpinfonav3 pt50 pb50 bgf btb">
+				    <div class="ui-layout">
+				       	<div class="stielss" style="color: #fff;"><span></span> 产品优势</div>
+				        <div class="stielssBot_btb2"></div>
+				        <ul class="cp_box mui-clearfix pro_list">
+					        <li>
+						        <div class="li_box">
+						            <img src="img/btb_cp1.png" class="" />
+						            <h5>保障数据安全</h5>
+						            <p class="">银行级用户数据加密、动态身份验证，多级风险识别控制，保障交易安全；钱包多层加密，离线冷存储，资金第三方托管，层层环扣，确保资金安全</p>
+						        </div>
+					        </li>
+					        <li>
+					            <div class="li_box">
+						            <img src="img/btb_cp2.png" class="" />
+						            <h5>支持多币种开发</h5>
+						            <p class="">系统支持中英文，内置多种功能模块，可定制开发，支持多币种开发</p>
+					            </div>
+					        </li>
+					        <li>
+					            <div class="li_box">
+					                <img src="img/btb_cp3.png" class="" />
+					          		<h5>快速部署，轻量化架构</h5>
+					          		<p class="">B／S架构，实现信息实时推送，K线数据更新更快，具备多种深度数据，行情、交易可同屏展示，实施简单</p>
+					         	</div>
+					        </li>
+					        <li>
+					         	<div class="li_box">
+					          		<img src="img/btb_cp4.png" class="" />
+					          		<h5>一站式服务</h5>
+					          		<p class="">提供整套解决方案，平台建站、定制开发、后期维护、运营支持、服务器代购、SSL认证等一站式服务</p>
+					         	</div>
+					        </li>
+				        </ul>
+				    </div>
+			    </div>
+   			</section>
+			<section class="my_pro">
+			    <div class="pro_ours">
+			        <div class="pro_ours_title">
+			            <span>我们的产品</span><span>OUR PRODUCTS</span>
+			        </div>
+			       	<div class="pro_ours_imgs">
+			       		<ul class="pro_ours_imgs_lists">
+					        <li class="li_bgm01">
+					            <span><img src="img/tradnum_03.png" alt=""></span>
+					            <span>数字货币交易所系统</span> 
+					        </li>
+					        <li class="li_bgm02">
+					            <span><img src="img/tradnum_04.png" alt=""></span>
+					            <span>币币交易系统</span>
+					        </li>
+					        <li class="li_bgm03">
+					            <span><img src="img/tradnum_05.png" alt=""></span>
+					            <span>数字货币消费商城系统</span>
+					        </li>
+					        <li class="li_bgm04">
+					            <span><img src="img/tradnum_35.png" alt=""></span>
+					            <span>区块链浏览器软件</span>
+					        </li>
+					    </ul>
+					    <ul class="pro_ours_imgs_lists">
+					        <li class="li_bgm05">
+					            <span><img src="img/tradnum_31.png" alt=""></span>
+					            <span>数字货币电子钱包系统</span>
+					        </li>
+					        <li class="li_bgm06">
+					            <span><img src="img/tradnum_32.png" alt=""></span>
+					            <span>数字货币做市商系统</span>
+					        </li>
+					        <li class="li_bgm07">
+					            <span><img src="img/tradnum_33.png" alt=""></span>
+					            <span>数字货币代理商系统</span>
+					        </li>
+					        <li class="li_bgm08">
+					            <span><img src="img/tradnum_34.png" alt=""></span>
+					            <span>数字货币搬砖机器人</span>
+					        </li>
+			        	</ul>
+			       </div>
+			    </div>
+			</section>
+			<section class="coup">
+     <header class="ui-layout">
+      <div class="stielss stielss_btb"><span></span>平台架构</div>
+      <div class="stielssBot_btb"></div>
+     </header>
+     <div class="coup_box">
+      <div class="coup_all">
+       <span>全网身份服务</span>
+      </div>
+      <div class="coup_center marL10">
+                               <div class="coup_center_single">
+           <span>图形界面/命令行</span>
+          </div>
+          <div class="coup_center_ul1 marT15 marB15">
+           <ul>
+            <li><span class="bgc46adfc">交易所服务</span></li>           
+            <li><span class="bgc6995ff">钱包系统</span></li>
+            <li><span class="bgc3bd3f8">点对点交易</span></li>
+            <li><span class="bgc9991ff">代理商系统</span></li>
+           </ul>
+          </div>
+          <div class="coup_center_single bgcb6dfff">
+         <span>SDK/API/BaaS</span>
+        </div>
+          <div class="coup_center_ul2">
+           <ul class="marT15 marB15">
+            <li class="bgcb6dfff">
+             <div class="coup_center_title"><span class="bgc46adfc">金融基础仿伪</span></div>
+             <div class="coup_center_midle">
+              <span class="bgc46adfc marR10x">资产定价</span>    
+              <span class="bgc46adfc marL10x">物理性</span>
+              <span class="bgc46adfc marR10x">风险量化</span>
+              <span class="bgc46adfc marL10x">资产映射</span>
+             </div>
+             <div class="coup_center_btm">
+              <span class="bgc46adfc marT15">金融DB</span>
+             </div>
+            </li>
+            <li class="bgcb6dfff">
+           <div class="coup_center_title"><span class="bgc46adfc">区块链服务</span></div>
+           <div class="coup_center_midle">
+            <span class="bgc46adfc marR10x">交易服务</span> 
+            <span class="bgc46adfc marL10x">共识机制</span>
+            <span class="bgc46adfc marR10x">智能合约</span>
+            <span class="bgc46adfc marL10x">投票服务</span>
+           </div>
+           <div class="coup_center_btm">
+            <span class="bgc46adfc marT15">p2p协议</span>
+           </div>
+          </li>
+          <li class="bgcb6dfff">
+            <div class="coup_center_title"><span class="bgc46adfc">系统运维服务</span></div>
+            <div class="coup_center_midle">
+             <span class="bgc46adfc marR10x">身份服务</span>
+             <span class="bgc46adfc marL10x">访问监控</span>
+             <span class="bgc46adfc marR10x">系统监控</span>
+             <span class="bgc46adfc marL10x">系统日志</span>
+            </div>
+            <div class="coup_center_btm">
+             <span class="bgc46adfc marT15">系统配置</span>
+            </div>
+           </li>
+           </ul>
+          </div>
+          <div class="coup_center_single bgcb6dfff marT15">
+         <span>区块链专属网络</span>
+        </div>
+        <div class="coup_center_single marT15">
+          <span>操作系统OS</span>
+         </div>
+      </div>
+      <div class="coup_public marL10">
+       <span>公共监管服务</span>
+      </div>
+     </div>
+   </section>
+			<section class="ours">
+				<div class="footer">
+    <div class="huyx">dsfdsf@163.com</div>
+	     <div class="hu" style="display: none;">
+	      <img style="width: 95px;" src="" />
+		</div>
+		<div class="hutel">400-996-7957</div>
+	<div class="warpper">
+		
+	<div style="text-align: center; ">
+		<div class="fbox_l">
+    <div class="b_item br_f">
+        <a target="_blank" class="pdleft0" href="#">区块链钱包 </a>
+        <a target="_blank" class="" href="#">区块链浏览器</a><br/>
+        <a target="_blank" class="pdleft0" href="#">手机钱包</a>
+        <a target="_blank" class="pd555" href="#">区块链交易所</a><br/>
+        <a target="_blank" class="pdleft0" href="#">智能合约</a>
+        <a target="_blank" class="pd555" href="#">挖矿系统</a><br/>
+    </div>
+    <div class="v_line"></div>
+    <div class="b_item" style="padding-left: 12px; padding-right: 12px;">
+        <p>7*24小时客服热线</p><br/>
+        <a class="tel" href="tel:400-873-2911">11111111111</a><br/>
+        <p class="tips">服务时间：全天候服务</p>
+    </div>
+    <!--<div class="v_line"></div>-->
+    </div>
+    <div class="b_item" style="padding-top: 10px;">
+        <p class="p_img">
+            <a href="javascript:void(0);" class="hu1"><img class="d_3" src="img/mail.png" /></a>
+            <a href="javascript:void(0);" class="hu2"><img class="d_2" src="img/weixin.png" /></a>
+            <a href="javascript:void(0);" class="hu3"><img class="d_1" src="img/call7.png" /></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1078127666&site=qq&menu=yes"><img src="img/QQ_bg.png" /></a>
+        </p><br/>
+        <p >关注我们</p>
+    </div>
+
+    <div class="b_item" style="float: right;">
+        <img style="width: 95px;" src="#" /><br/>
+        <p class="p_dyh">客服微信</p>
+    </div>
+
+        <div style="clear: both;"></div>
+
+</div>
+</div>
+<div style=" clear: both;border-bottom: 1px solid #5a5a5a;"></div>
+<p  style="text-align: center;padding: 15px; font-size: 12px;margin-bottom: 0;">
+    Copyright @   111111111    All Rights Reserved   版权    ICP证：11111111111
+</p>
+
+</div>
+			</section>
+		</div>
+		<div class="container_h5">
+			<header class="con_head">
+				<section class="head_left">
+					<article class="left_logo"></article>
+					<article class="left_exp">
+						<article class="exp_tit1">云区块</article>
+						<article class="exp_tit2">区块链开发与应用一站式服务平台</article>
+					</article>
+				</section>
+				<section class="list"><img src="img/list.png" /></section>
+				<!--<section class="head_right">
+					<article class="right_logo"></article>
+					<article class="right_exp">
+						<article class="exp_tit1">400-873-2911</article>
+						<article class="exp_tit2">免费专业咨询顾问(9:00-19:00)</article>
+					</article>
+					<article class="right_call">
+						<article class="call_btn">免费咨询</article>
+					</article>
+				</section>-->
+			</header>
+			<nav class="nav1">
+				<ul class="nav_con1">
+					<li id="index1">首页</li>
+					<li id="heart1">核心技术</li>
+					<li id="pro_ext1">产品优势</li>
+					<li id="my_pro1">我的产品</li>
+					<li id="coup1">平台架构</li>
+					<li id="ours1">关于我们</li>
+				</ul>
+			</nav>
+			<section class="pay_img">
+				<header class="img_tit">
+					<div class="tit1">交易所交易结构图</div>
+					<div class="tit2">TRADE STRUCTURE CHART</div>
+				</header>
+				<section class="img_bg"></section>
+			</section>
+			<section class="heart heart1">
+				<div id="core">
+						<div class="ui-layout">
+							<div class="stielss stielss_btb"><span></span>核心技术</div>
+								<div class="stielssBot_btb"></div>
+							<div></div>
+						</div>
+						<div class="hx">
+							<div class="hx_tit">系统核心技术
+								<p>SYSTEM CORE TECHNOLOGY</p>
+							</div>
+							<div class="hx_left">
+								<ul>
+									<li>
+										<span style="margin-left: 125px;" class="left_xx">专属网络</span><span class="quan">●</span>
+									</li>
+									<li>
+											<span class="left_xx">金属设施</span><span class="quan">●</span>
+									</li>
+									<li>
+											<span class="left_xx">安全机制</span><span class="quan">●</span>
+									</li>
+									<li>
+											<span style="margin-left: 125px;" class="left_xx">身份链</span><span class="quan">●</span>
+									</li>
+								</ul>
+							</div>
+							<div class="hx_right">
+									<ul>
+										<li>
+												<span class="quan" style="margin-left:-125px">●</span><span  class="left_xx">智能合约</span>
+										</li>
+										<li>
+												<span class="quan">●</span><span class="left_xx">共识机制</span>
+										</li>
+										<li>
+												<span class="quan">●</span><span class="left_xx">跨链交易</span>
+										</li>
+										<li>
+												<span class="quan" style="margin-left:-125px">●</span><span class="left_xx">多链交互</span>
+										</li>
+									</ul>
+								</div>
+							<img src="img/hxjs.png" style="height: 500px;" />
+						</div>
+					</div>
+			</section>
+			<section class="pay_prob pay_prob1">
+					<header class="ui-layout">
+						<div class="stielss stielss_btb"><span></span>交易形式</div>
+						<div class="stielssBot_btb"></div>
+					</header>
+					<ul>
+						<li class="zheng">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy1.png" /></div>
+								<div class="prob_tit">币币交易</div>
+							</div>
+							<div class="back">
+								针对虚拟货币和虚拟货币之间的交易，支持以其中一种币作为计价单位去购买其他币种。
+							</div>
+						</li>
+						<li class="zheng">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy2.png" /></div>
+								<div class="prob_tit">市场交易</div>
+							</div>
+							<div class="back">市价交易是指用户只设置买卖的总币数，生成委托单，从一开始撮合直到总币数交易完成。</div>
+						</li>
+						<li class="zheng">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy3.png" /></div>
+								<div class="prob_tit">限价交易</div>
+							</div>
+							<div class="back">支持用户设置买入/卖出币的价格和数量，自动撮合市场上的买单和卖单，达到用户设置的价格便按照价格优先时间优先顺序自动成交。</div>
+						</li>
+						<li class="zheng zheng_spe">
+							<div class="cons">
+								<div class="prob_logo"><img src="img/btb_jy4.png" /></div>
+								<div class="prob_tit">场外自由交易</div>
+							</div>
+							<div class="back">支持卖家在平台上发布出售比特币/以太币的项目，并说明付款方式和汇率。买家通过筛选符合自己的项目直接在线完成交易。</div>
+						</li>
+					</ul>
+			</section>
+			<section class="pro_ext pro_ext1">
+			    <div class="cpinfonav3 pt50 pb50 bgf btb">
+				    <div class="ui-layout">
+				       	<div class="stielss" style="color: #fff;"><span></span> 产品优势</div>
+				        <div class="stielssBot_btb2"></div>
+				        <ul class="cp_box mui-clearfix pro_list">
+					        <li>
+						        <div class="li_box">
+						            <img src="img/btb_cp1.png" class="" />
+						            <h5>保障数据安全</h5>
+						            <p class="">银行级用户数据加密、动态身份验证，多级风险识别控制，保障交易安全；钱包多层加密，离线冷存储，资金第三方托管，层层环扣，确保资金安全</p>
+						        </div>
+					        </li>
+					        <li>
+					            <div class="li_box">
+						            <img src="img/btb_cp2.png" class="" />
+						            <h5>支持多币种开发</h5>
+						            <p class="">系统支持中英文，内置多种功能模块，可定制开发，支持多币种开发</p>
+					            </div>
+					        </li>
+					        <li>
+					            <div class="li_box">
+					                <img src="img/btb_cp3.png" class="" />
+					          		<h5>快速部署，轻量化架构</h5>
+					          		<p class="">B／S架构，实现信息实时推送，K线数据更新更快，具备多种深度数据，行情、交易可同屏展示，实施简单</p>
+					         	</div>
+					        </li>
+					        <li>
+					         	<div class="li_box">
+					          		<img src="img/btb_cp4.png" class="" />
+					          		<h5>一站式服务</h5>
+					          		<p class="">提供整套解决方案，平台建站、定制开发、后期维护、运营支持、服务器代购、SSL认证等一站式服务</p>
+					         	</div>
+					        </li>
+				        </ul>
+				    </div>
+			    </div>
+   			</section>
+   			<section class="my_pro my_pro1">
+			    <div class="pro_ours">
+			        <div class="pro_ours_title">
+			            <span>我们的产品</span><span>OUR PRODUCTS</span>
+			        </div>
+			       	<div class="pro_ours_imgs">
+			       		<ul class="pro_ours_imgs_lists">
+					        <li class="li_bgm01">
+					            <span><img src="img/tradnum_03.png" alt=""></span>
+					            <span>数字货币交易所系统</span> 
+					        </li>
+					        <li class="li_bgm02">
+					            <span><img src="img/tradnum_04.png" alt=""></span>
+					            <span>币币交易系统</span>
+					        </li>
+					        <li class="li_bgm03">
+					            <span><img src="img/tradnum_05.png" alt=""></span>
+					            <span>数字货币消费商城系统</span>
+					        </li>
+					        <li class="li_bgm04">
+					            <span><img src="img/tradnum_35.png" alt=""></span>
+					            <span>区块链浏览器软件</span>
+					        </li>
+					        <li class="li_bgm05">
+					            <span><img src="img/tradnum_31.png" alt=""></span>
+					            <span>数字货币电子钱包系统</span>
+					        </li>
+					        <li class="li_bgm06">
+					            <span><img src="img/tradnum_32.png" alt=""></span>
+					            <span>数字货币做市商系统</span>
+					        </li> 
+					        <li class="li_bgm07">
+					            <span><img src="img/tradnum_33.png" alt=""></span>
+					            <span>数字货币代理商系统</span>
+					        </li>
+					        <li class="li_bgm08">
+					            <span><img src="img/tradnum_34.png" alt=""></span>
+					            <span>数字货币搬砖机器人</span>
+					        </li>
+			        	</ul>
+			       </div>
+			    </div>
+			</section>
+			<section class="coup coup1">
+				<header class="ui-layout">
+			      	<div class="stielss stielss_btb"><span></span>平台架构</div>
+			      	<div class="stielssBot_btb"></div>
+			    </header>
+			    <section class="cont">
+			    	<section class="head_tit1">全网身份服务</section>
+			    	<section class="main_tit1">图形界面/命令行</section>
+			    	<section class="main_con1">
+			    		<article>交易所服务</article>
+			    		<article>点对点交易</article>
+			    	</section>
+			    	<section class="main_con2">
+			    		<article>钱包系统</article>
+			    		<article>代理商系统</article>
+			    	</section>
+			    	<section class="main_tit2">SDK/API/BaaS</section>
+			    	<section class="main_con3">
+			    		<header>金融基础防伪</header>
+			    		<section class="con_child">
+			    			<article class="child1">
+			    				<div>资产定价</div>
+			    				<div>风险量化</div>
+			    			</article>
+			    			<article class="child2">
+			    				<div>物理性</div>
+			    				<div>资产映射</div>
+			    			</article>
+			    			<article class="child3">
+			    				<div>金融DB</div>
+			    			</article>
+			    		</section>
+			    	</section>
+			    	<section class="main_con3">
+			    		<header>区块链服务</header>
+			    		<section class="con_child">
+			    			<article class="child1">
+			    				<div>交易服务</div>
+			    				<div>智能合约</div>
+			    			</article>
+			    			<article class="child2">
+			    				<div>共识机制</div>
+			    				<div>投票服务</div>
+			    			</article>
+			    			<article class="child3">
+			    				<div>p2p协议</div>
+			    			</article>
+			    		</section>
+			    	</section>
+			    	<section class="main_con3">
+			    		<header>系统运维服务</header>
+			    		<section class="con_child">
+			    			<article class="child1">
+			    				<div>身份服务</div>
+			    				<div>访问监控</div>
+			    			</article>
+			    			<article class="child2">
+			    				<div>系统监控</div>
+			    				<div>系统日志</div>
+			    			</article>
+			    			<article class="child3">
+			    				<div>系统配置</div>
+			    			</article>
+			    		</section>
+			    	</section>
+			    	<section class="main_footer">区块链专属网络</section>
+			    	<section class="all_footer">操作系统OS</section>
+			    	<section class="footers">公共监管服务</section>
+			    </section>
+			</section>
+			<section class="ours ours1">
+				<article class="hrefs">
+					<article class="hrefs_child">
+						<div><a href="#">区块链钱包</a></div>
+						<div><a href="#">区块链浏览器</a></div>
+						<div><a href="#">手机钱包</a></div>
+					</article>
+					<article class="hrefs_child">
+						<div><a href="#">区块链交易所</a></div>
+						<div><a href="#">智能合约</a></div>
+						<div><a href="#">挖矿系统</a></div>
+					</article>
+				</article>
+				<article class="ours_call">
+					<div>7*24小时客服热线</div>
+					<div>11111111111</div>
+					<div>服务时间: 全天候服务</div>
+				</article>
+				<article class="ours_logo">
+					<article class="logo_msg logo_mail">
+						admin@xinhuokj.com
+					</article>
+					<article class="logo_msg logo_weixin">
+						<img src="img/ewm-1.png" />
+					</article>
+					<article class="logo_msg logo_call7">
+						111111111111
+					</article>
+					<article class="logo_call">
+						<div class="mail"><img src="img/mail.png" /></div>
+						<div class="weixin"><img src="img/weixin.png" /></div>
+						<div class="call7"><img src="img/call7.png" /></div>
+						<div><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1078127666&site=qq&menu=yes"><img src="img/QQ_bg.png" /></a></div>
+					</article>
+					<article class="logo_tit">关注我们</article>
+				</article>
+				<article class="footer_bottom">Copyright @ </article>
+			</section>
+		</div>
+		<script>
+			$(".list").bind('click',function(){
+				$(".nav1").toggle();
+			})
+			$(".mail").hover(function(){
+				$(this).addClass("hover");
+			    $(".logo_mail").show();
+			},function(){
+				$(this).removeClass("hover");
+			    $(".logo_mail").hide();
+			})
+			$(".weixin").hover(function(){
+				$(this).addClass("hover");
+			    $(".logo_weixin").show();
+			},function(){
+				$(this).removeClass("hover");
+			    $(".logo_weixin").hide();
+			})
+			$(".call7").hover(function(){
+				$(this).addClass("hover");
+			    $(".logo_call7").show();
+			},function(){
+				$(this).removeClass("hover");
+			    $(".logo_call7").hide();
+			})
+			$(".pay_prob li").hover(
+			  function() {
+			    $(this).addClass("hover");
+			    $(this).find(".cons").css("display","none");
+			    $(this).find(".back").css("display","block");
+			
+			  },
+			  function () {
+			    $(this).removeClass("hover");
+			    $(this).find(".cons").css("display","block");
+			    $(this).find(".back").css("display","none");
+			
+			  }
+			);
+			$("#index,#index1").click(function(){
+				$("html,body").animate({ 
+			      scrollTop: 0
+			    })
+			})
+			var heart_top=$(".heart").offset().top;
+			var ext_top=$(".pro_ext").offset().top;
+			var pro_top=$(".my_pro").offset().top;
+			var coup_top=$(".coup").offset().top;
+			var ours_top=$(".ours").offset().top;
+			$("#heart").click(function() {
+			    $("html,body").animate({
+			      scrollTop: heart_top-100+"px"
+			    })
+			  });
+			  $("#heart1").click(function() {
+			    $("html,body").animate({
+			      scrollTop: $(".heart1").offset().top-60+"px"
+			    })
+			  });
+			  $("#pro_ext").click(function() {
+			    $("html,body").animate({
+			      scrollTop: ext_top-100+"px"
+			    })
+			  });
+			  $("#pro_ext1").click(function() {
+			    $("html,body").animate({
+			      scrollTop: $(".pro_ext1").offset().top-60+"px"
+			    })
+			  });
+			  $("#my_pro").click(function() {
+			    $("html,body").animate({
+			      scrollTop: pro_top-150+"px"
+			    })
+			  });
+			   $("#my_pro1").click(function(){
+			    $("html,body").animate({
+			      scrollTop: $(".my_pro1").offset().top-60+"px"
+			    })
+			  });
+			  $("#coup").click(function() {
+			    $("html,body").animate({
+			      scrollTop: coup_top-150+"px"
+			    });
+			  });
+			  $("#coup1").click(function() {
+			    $("html,body").animate({
+			      scrollTop: $(".coup1").offset().top-60+"px"
+			    });
+			  });
+			  $("#ours").click(function() {
+			    $("html,body").animate({
+			      scrollTop: ours_top-100+"px"
+			    });
+			  });
+			  $("#ours1").click(function() {
+			    $("html,body").animate({
+			      scrollTop: $(".ours1").offset().top-60+"px"
+			    });
+			  });
+			  var nowHeight=$(".nav").offset().top;
+			  $(window).scroll(function(){
+			  	
+			  	if($(document).scrollTop()>nowHeight){
+			  		$(".nav").addClass("spes");
+			  	}else{
+			  		$(".nav").removeClass("spes");
+			  	}
+			  })
+				$(".hu1").hover(function(){
+					$(".huyx").show();
+				},function(){
+					$(".huyx").hide();
+				});
+				$(".hu2").hover(function(){
+					$(".hu").show();
+				},function(){
+					$(".hu").hide();
+				})
+				$(".hu3").hover(function(){
+					$(".hutel").show();
+				},function(){
+					$(".hutel").hide();
+				})
+		</script>
+	</body>
+</html>
